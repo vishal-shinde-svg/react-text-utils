@@ -6,16 +6,19 @@ export default function TextForm(props) {
     //   console.log("hi" + text);
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("converted to the upper case");
   };
 
   const handleLowClick = () => {
     let lowData = text.toLowerCase();
     setText(lowData);
+    props.showAlert("converted to the lower case");
   };
 
   const cancleClick = () => {
     let lowData1 = "";
     setText(lowData1);
+    props.showAlert("crear the text Area");
   };
 
   const getTextCopy = () => {
@@ -39,15 +42,25 @@ export default function TextForm(props) {
 
   return (
     <>
-      <div className="container">
+      <div
+        className="container"
+        style={{ color: props.mode === "light" ? "dark" : "white" }}
+      >
         <h1>{props.heading}</h1>
-        <div className="mb-3">
+        <div
+          className="mb-3"
+          style={{ color: props.mode === "light" ? "dark" : "white" }}
+        >
           <textarea
             className="form-control"
             value={text}
             id="exampleFormControlTextarea1"
             onChange={textChange}
             rows="8"
+            style={{
+              backgroundColor: props.mode === "light" ? "white" : "gray",
+              color: props.mode === "light" ? "dark" : "white",
+            }}
           ></textarea>
         </div>
         <button className="btn btn-primary mx-2" onClick={handleUpClick}>
@@ -80,7 +93,7 @@ export default function TextForm(props) {
         <p>{0.008 / text.split(" ").length}</p>
 
         <h3 className="my-3">Preview...</h3>
-        <h3>{text}</h3>
+        <h3>{text.length > 0 ? text : "Enter something to prview here..."}</h3>
       </div>
     </>
   );

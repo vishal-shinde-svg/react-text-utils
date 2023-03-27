@@ -23,8 +23,8 @@ export default function About() {
     }
   };
   return (
-    <div classNameName="container" style={myStyle}>
-      <h1 classNameName="my-3">About us</h1>
+    <div className="container" style={myStyle}>
+      <h1 className="my-3">About us</h1>
       <div className="accordion" id="accordionExample">
         <div className="accordion-item">
           <h2 className="accordion-header">
@@ -120,7 +120,7 @@ export default function About() {
           </div>
         </div>
       </div>
-      <div classNameName="container">
+      <div className="container">
         <button
           type="button"
           onClick={setToggle}
