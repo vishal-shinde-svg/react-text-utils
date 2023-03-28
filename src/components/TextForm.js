@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export default function TextForm(props) {
   const handleUpClick = () => {
-    //   console.log("hi" + text);
+    //console.log("hi" + text);
     let newText = text.toUpperCase();
     setText(newText);
     props.showAlert("converted to the upper case");
@@ -18,7 +18,7 @@ export default function TextForm(props) {
   const cancleClick = () => {
     let lowData1 = "";
     setText(lowData1);
-    props.showAlert("crear the text Area");
+    props.showAlert("clear the text Area");
   };
 
   const getTextCopy = () => {
@@ -34,7 +34,7 @@ export default function TextForm(props) {
   };
 
   const textChange = (event) => {
-    // console.log("change the value");
+    //console.log("change the value");
     setText(event.target.value);
   };
 
@@ -86,11 +86,16 @@ export default function TextForm(props) {
       <div className="container my-5">
         <h3>Here you text summary...</h3>
         <p className="my-3">
-          The Number of Word {text.split(" ").length} and Number of Character is{" "}
-          {text.length}{" "}
+          The Number of Word{" "}
+          {
+            text.split(" ").filter((element) => {
+              return element.length !== 0;
+            }).length
+          }{" "}
+          and Number of Character is {text.length}{" "}
         </p>
         <h2 className="my-3"> what time take to Read... </h2>
-        <p>{0.008 / text.split(" ").length}</p>
+        <p>{0.008 * text.split(" ").length} take minutes to read </p>
 
         <h3 className="my-3">Preview...</h3>
         <h3>{text.length > 0 ? text : "Enter something to prview here..."}</h3>
